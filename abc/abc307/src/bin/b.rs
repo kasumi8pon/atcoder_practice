@@ -13,8 +13,10 @@ fn main() {
                 continue;
             }
 
-            let new_string: Vec<_> = strings[i].clone().into_iter().chain(strings[j].clone().into_iter()).collect();
-            let reverse_string: Vec<_> = new_string.clone().into_iter().rev().collect();
+            let mut new_string = strings[i].clone();
+            new_string.extend(strings[j].clone());
+            let mut reverse_string = new_string.clone();
+            reverse_string.reverse();
 
             if new_string == reverse_string {
                 println!("Yes");
